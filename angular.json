@@ -3,5 +3,110 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-forms-practice": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/ng-forms-practice",
+      "sourceRoot": "projects/ng-forms-practice/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ng-forms-practice",
+            "index": "projects/ng-forms-practice/src/index.html",
+            "main": "projects/ng-forms-practice/src/main.ts",
+            "polyfills": "projects/ng-forms-practice/src/polyfills.ts",
+            "tsConfig": "projects/ng-forms-practice/tsconfig.app.json",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/ng-forms-practice/src/favicon.ico",
+              "projects/ng-forms-practice/src/assets"
+            ],
+            "styles": [
+              "/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/ng-forms-practice/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ng-forms-practice/src/environments/environment.ts",
+                  "with": "projects/ng-forms-practice/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-forms-practice:build:production"
+            },
+            "development": {
+              "browserTarget": "ng-forms-practice:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-forms-practice:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-forms-practice/src/test.ts",
+            "polyfills": "projects/ng-forms-practice/src/polyfills.ts",
+            "tsConfig": "projects/ng-forms-practice/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-forms-practice/karma.conf.js",
+            "inlineStyleLanguage": "less",
+            "assets": [
+              "projects/ng-forms-practice/src/favicon.ico",
+              "projects/ng-forms-practice/src/assets"
+            ],
+            "styles": [
+              "projects/ng-forms-practice/src/styles.less"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-forms-practice"
 }
