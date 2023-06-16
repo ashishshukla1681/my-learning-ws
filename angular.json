@@ -31,7 +31,7 @@
               "projects/ng-forms-practice/src/assets"
             ],
             "styles": [
-              "/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "projects/ng-forms-practice/src/styles.less"
             ],
             "scripts": []
